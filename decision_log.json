@@ -1,0 +1,654 @@
+[
+    {
+        "asset_id": 1001,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1001 was made because all source systems\u2014location tracker, maintenance system, and inventory system\u2014provided consistent and non-conflicting information. The location tracker confirmed the asset is at Site Alpha with recent presence and operational status, the maintenance system reported it as operational with good condition, and the inventory system confirmed it is available and accounted for. No conflicts were found, and the most up-to-date values across sources were merged into a single coherent record, resulting in a complete and trusted view of the asset.",
+        "authoritative_record": {
+            "asset_id": 1001,
+            "asset_name": "Generator G1",
+            "asset_type": "Generator",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:00:00",
+            "latitude": 51.5001,
+            "location": "Site Alpha",
+            "longitude": -0.1201,
+            "quantity": 1,
+            "serial_number": "GEN-001",
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:18:51.587484"
+    },
+    {
+        "asset_id": 1002,
+        "decision": "merge",
+        "reasoning": "The decision to merge the data for asset ID 1002 was made because information from the location tracker, maintenance system, and inventory system was consistent overall, with only one key conflict resolved. The conflict occurred in the \"status\" field: the location tracker reported the forklift as \"operational,\" while the maintenance system marked it as \"under_repair.\" Since maintenance status is most critical for safety and operational planning, the authoritative record adopted \"under_repair\" from the maintenance system. All other fields\u2014such as location, asset name, serial number, and availability\u2014were in agreement or complementary across systems, allowing a unified record to be created that reflects both the current repair status and physical location in Warehouse A.",
+        "authoritative_record": {
+            "asset_id": 1002,
+            "asset_name": "Forklift F2",
+            "asset_type": "Forklift",
+            "availability": "available",
+            "condition": "fair",
+            "last_seen": "2026-08-12 10:05:00",
+            "latitude": 51.5012,
+            "location": "Warehouse A",
+            "longitude": -0.1212,
+            "quantity": 1,
+            "serial_number": "FL-002",
+            "status": "under_repair"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "operational",
+                    "maintenance_source": "under_repair"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "under_repair"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:19:04.814027"
+    },
+    {
+        "asset_id": 1003,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1003 was made because all source systems\u2014the location tracker, maintenance system, and inventory system\u2014provided consistent and non-conflicting data. The asset, identified as \"Pump P3\" with serial number \"PMP-003\", is confirmed to be out of service, located at Site Beta with GPS coordinates recorded, and currently held for inspection with a quantity of 2 in inventory. The maintenance system reports its condition as poor, which aligns with its status, and all updates are within a reasonable time window. No conflicts were found, and the merged record reflects a complete, coherent view across all systems.",
+        "authoritative_record": {
+            "asset_id": 1003,
+            "asset_name": "Pump P3",
+            "asset_type": "Pump",
+            "availability": "held_for_inspection",
+            "condition": "poor",
+            "last_seen": "2026-08-12 10:10:00",
+            "latitude": 51.5023,
+            "location": "Site Beta",
+            "longitude": -0.1223,
+            "quantity": 2,
+            "serial_number": "PMP-003",
+            "status": "out_of_service"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:19:18.344075"
+    },
+    {
+        "asset_id": 1004,
+        "decision": "merge",
+        "reasoning": "The decision to merge was made for asset Truck T4 (ID: 1004) because data from the location tracker, maintenance system, and inventory system were largely consistent and complementary. The maintenance system and inventory system agree on the asset\u2019s name, type, serial number, and condition, while the location tracker provides real-time positioning. A conflict in the \"status\" field was resolved by prioritizing the maintenance system, which reports the asset as \"operational,\" over the location tracker's \"in_transit\" status. All other fields were merged without issue, resulting in a complete, authoritative record.",
+        "authoritative_record": {
+            "asset_id": 1004,
+            "asset_name": "Truck T4",
+            "asset_type": "Truck",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:15:00",
+            "latitude": 51.5034,
+            "location": "Depot C",
+            "longitude": -0.1234,
+            "quantity": 1,
+            "serial_number": "TRK-004",
+            "status": "operational"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "in_transit",
+                    "maintenance_source": "operational"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "operational"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:19:23.962869"
+    },
+    {
+        "asset_id": 1005,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1005 was made because all source systems\u2014location tracker, maintenance system, and inventory system\u2014provided consistent and complementary information with no conflicts. The location tracker confirmed the asset\u2019s presence at Site Gamma with recent telemetry, the maintenance system reported it as operational with good condition, and the inventory system verified availability and matching asset details. All fields were successfully reconciled into a unified view, resulting in a complete and trustworthy record with nothing left unresolved.",
+        "authoritative_record": {
+            "asset_id": 1005,
+            "asset_name": "Generator G5",
+            "asset_type": "Generator",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:20:00",
+            "latitude": 51.5045,
+            "location": "Site Gamma",
+            "longitude": -0.1245,
+            "quantity": 1,
+            "serial_number": "GEN-005",
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:19:27.716522"
+    },
+    {
+        "asset_id": 1003,
+        "decision": "merge",
+        "reasoning": "The decision to merge was made for Asset ID 1003 because data from the maintenance system, inventory system, and location tracker each provided partial but conflicting information. The authoritative record reflects a consolidated view, prioritizing the most critical operational status from the maintenance system, which reported the pump as \"out_of_service\" due to poor condition\u2014overriding the \"operational\" status from the location tracker. This conflict in status was resolved in favor of the maintenance system as the authoritative source. The final record also incorporates the pump\u2019s held-for-inspection availability status from the inventory system and its last known location and coordinates from the location tracker, ensuring a complete and accurate asset profile.",
+        "authoritative_record": {
+            "asset_id": 1003,
+            "asset_name": "Pump P3",
+            "asset_type": "Pump",
+            "availability": "held_for_inspection",
+            "condition": "poor",
+            "last_seen": "2026-08-12 10:10:00",
+            "latitude": 51.5023,
+            "location": "Site Beta",
+            "longitude": -0.1223,
+            "quantity": 2,
+            "serial_number": "PMP-003",
+            "status": "out_of_service"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "operational",
+                    "maintenance_source": "out_of_service"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "out_of_service"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:20:26.453839"
+    },
+    {
+        "asset_id": 1001,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1001 was made because all source systems\u2014the location tracker, maintenance system, and inventory system\u2014provided consistent and complementary information with no conflicts. The location tracker confirmed the asset\u2019s presence at Site Alpha with recent telemetry, the maintenance system reported it as operational with good condition, and the inventory system marked it as available with a matching name, type, and serial number. All data aligned on key attributes, and the most recent updates from each system were incorporated into the unified record, resulting in a complete and trusted view of the asset with nothing left unresolved.",
+        "authoritative_record": {
+            "asset_id": 1001,
+            "asset_name": "Generator G1",
+            "asset_type": "Generator",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:00:00",
+            "latitude": 51.5001,
+            "location": "Site Alpha",
+            "longitude": -0.1201,
+            "quantity": 1,
+            "serial_number": "GEN-001",
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:21:41.433081"
+    },
+    {
+        "asset_id": 1002,
+        "decision": "merge",
+        "reasoning": "The decision to merge the data for asset ID 1002, Forklift F2, was made because information from the location tracker, maintenance system, and inventory system collectively provide a complete and mostly consistent picture of the asset. The only conflict arose in the \"status\" field: the location tracker reported the forklift as \"operational\" based on its last sighting in Warehouse A, while the maintenance system marked it as \"under_repair\". This conflict was resolved in favor of the maintenance system, as it is the authoritative source for repair status, resulting in the final status being set to \"under_repair\". All other fields\u2014such as asset name, type, serial number, location, and availability\u2014were consistent or complementary across sources and merged without issue.",
+        "authoritative_record": {
+            "asset_id": 1002,
+            "asset_name": "Forklift F2",
+            "asset_type": "Forklift",
+            "availability": "available",
+            "condition": "fair",
+            "last_seen": "2026-08-12 10:05:00",
+            "latitude": 51.5012,
+            "location": "Warehouse A",
+            "longitude": -0.1212,
+            "quantity": 1,
+            "serial_number": "FL-002",
+            "status": "under_repair"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "operational",
+                    "maintenance_source": "under_repair"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "under_repair"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:21:47.712090"
+    },
+    {
+        "asset_id": 1003,
+        "decision": "merge",
+        "reasoning": "The decision to merge the data for Asset ID 1003 was made because information from the location tracker, maintenance system, and inventory system collectively provide a complete and consistent asset record, with conflicts resolved based on authoritative source priority. The maintenance system took precedence in determining the asset's status as \"out-of_service,\" overriding the \"operational\" status reported by the location tracker, since maintenance status is considered more critical for safety and operations. All other fields\u2014such as asset name, type, serial number, location, and condition\u2014were in agreement or complemented each other across sources. The final record reflects the most accurate and up-to-date picture, including the \"held_for_inspection\" availability from the inventory system and the poor condition from maintenance, ensuring a comprehensive view for decision-making.",
+        "authoritative_record": {
+            "asset_id": 1003,
+            "asset_name": "Pump P3",
+            "asset_type": "Pump",
+            "availability": "held_for_inspection",
+            "condition": "poor",
+            "last_seen": "2026-08-12 10:10:00",
+            "latitude": 51.5023,
+            "location": "Site Beta",
+            "longitude": -0.1223,
+            "quantity": 2,
+            "serial_number": "PMP-003",
+            "status": "out_of_service"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "operational",
+                    "maintenance_source": "out_of_service"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "out_of_service"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:21:59.398245"
+    },
+    {
+        "asset_id": 1004,
+        "decision": "merge",
+        "reasoning": "The decision to merge was made for asset Truck T4 (ID: 1004) because data from the location tracker, maintenance system, and inventory system collectively provide a complete and mostly consistent view of the asset. The only conflict arose in the \"status\" field, where the location tracker reported the asset as \"in_transit\" while the maintenance system listed it as \"operational.\" The maintenance system was chosen as the authoritative source for status, so \"operational\" was selected for the merged record. All other fields\u2014such as location, condition, and availability\u2014were consistent or complementary across systems, resulting in a unified, up-to-date record with no unresolved conflicts.",
+        "authoritative_record": {
+            "asset_id": 1004,
+            "asset_name": "Truck T4",
+            "asset_type": "Truck",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:15:00",
+            "latitude": 51.5034,
+            "location": "Depot C",
+            "longitude": -0.1234,
+            "quantity": 1,
+            "serial_number": "TRK-004",
+            "status": "operational"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "in_transit",
+                    "maintenance_source": "operational"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "operational"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:22:09.817552"
+    },
+    {
+        "asset_id": 1005,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1005 was made because all source systems\u2014location tracker, maintenance system, and inventory system\u2014are in full agreement on the asset's details, with no conflicts detected. The location tracker confirms Generator G5 is operational and located at Site Gamma with recent sighting data, the maintenance system reports it as operational with good condition, and the inventory system lists it as available with matching name, type, and serial number. Since all systems align and the data is consistent and up to date, the combined record was accepted without any unresolved issues.",
+        "authoritative_record": {
+            "asset_id": 1005,
+            "asset_name": "Generator G5",
+            "asset_type": "Generator",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:20:00",
+            "latitude": 51.5045,
+            "location": "Site Gamma",
+            "longitude": -0.1245,
+            "quantity": 1,
+            "serial_number": "GEN-005",
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-14T15:22:16.350172"
+    },
+    {
+        "asset_id": 1001,
+        "decision": "accept",
+        "reasoning": "The decision to accept the record for Asset ID 1001 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided fully consistent data, showing the asset at Site Alpha with matching coordinates, operational status, and last seen timestamp. Since there were no discrepancies between the systems, no conflicts required resolution, and the authoritative record was successfully built using the shared values. All reported fields align, resulting in a clean, unified view of the asset with no unresolved issues.",
+        "authoritative_record": {
+            "asset_id": 1001,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:00:00",
+            "latitude": 51.5001,
+            "location": "Site Alpha",
+            "longitude": -0.1201,
+            "quantity": null,
+            "serial_number": null,
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T20:39:50.616752"
+    },
+    {
+        "asset_id": 1002,
+        "decision": "accept",
+        "reasoning": "The decision to accept the record for Asset ID 1002 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided fully consistent data, agreeing on the asset\u2019s location (Warehouse A), coordinates, operational status, and last seen timestamp. Since no conflicts were detected, the authoritative record was successfully established using the shared values. However, several fields such as asset name, type, and condition remain unresolved due to missing data across all sources.",
+        "authoritative_record": {
+            "asset_id": 1002,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:05:00",
+            "latitude": 51.5012,
+            "location": "Warehouse A",
+            "longitude": -0.1212,
+            "quantity": null,
+            "serial_number": null,
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T20:39:52.848345"
+    },
+    {
+        "asset_id": 1003,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1003 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided fully consistent data. Each system reported the asset as being at Site Beta with identical coordinates, status (\"out_of_service\"), and last seen timestamp of \"2026-08-12 10:10:00\". Since there were no discrepancies between the sources, no conflicts required resolution, and the merged record accurately reflects the unanimous state reported across all systems.",
+        "authoritative_record": {
+            "asset_id": 1003,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:10:00",
+            "latitude": 51.5023,
+            "location": "Site Beta",
+            "longitude": -0.1223,
+            "quantity": null,
+            "serial_number": null,
+            "status": "out_of_service"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T20:39:55.530741"
+    },
+    {
+        "asset_id": 1004,
+        "decision": "accept",
+        "reasoning": "The decision to accept the record for Asset ID 1004 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided identical and fully consistent data regarding the asset\u2019s location, status, coordinates, and timestamp. With no discrepancies detected between the systems, the authoritative record was successfully generated with complete confidence, and no conflicts required resolution. All available fields were reconciled, leaving no unresolved data issues for this asset.",
+        "authoritative_record": {
+            "asset_id": 1004,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:15:00",
+            "latitude": 51.5034,
+            "location": "Depot C",
+            "longitude": -0.1234,
+            "quantity": null,
+            "serial_number": null,
+            "status": "in_transit"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T20:39:58.076369"
+    },
+    {
+        "asset_id": 1005,
+        "decision": "accept",
+        "reasoning": "Asset ID 1005 was assigned an \"accept\" decision because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided fully consistent data, showing the asset at Site Gamma with matching coordinates, operational status, and timestamps. Since no conflicts were detected across these systems, the authoritative record was successfully generated with complete confidence, and no data discrepancies were left unresolved.",
+        "authoritative_record": {
+            "asset_id": 1005,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:20:00",
+            "latitude": 51.5045,
+            "location": "Site Gamma",
+            "longitude": -0.1245,
+            "quantity": null,
+            "serial_number": null,
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T20:40:00.633322"
+    },
+    {
+        "asset_id": 1001,
+        "decision": "accept",
+        "reasoning": "The decision to accept the record for Asset ID 1001 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided identical data, confirming the asset is at Site Alpha with coordinates (51.5001, -0.1201), operational status, and last seen timestamp of 2026-08-12 10:00:00. No conflicts were found between the sources, so the authoritative record was created successfully with full consensus. However, several fields such as asset name, type, and serial number remain unresolved due to missing data across all sources.",
+        "authoritative_record": {
+            "asset_id": 1001,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:00:00",
+            "latitude": 51.5001,
+            "location": "Site Alpha",
+            "longitude": -0.1201,
+            "quantity": null,
+            "serial_number": null,
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:05:42.255270"
+    },
+    {
+        "asset_id": 1002,
+        "decision": "accept",
+        "reasoning": "The decision to accept the record for Asset ID 1002 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided fully consistent data, showing the asset in \"Warehouse A\" with matching coordinates, operational status, and last seen timestamp. Since there were no discrepancies between the systems, no resolution was needed, and the authoritative record was confidently established with the shared values. No conflicts were identified, and all available fields were successfully populated based on the agreement across sources.",
+        "authoritative_record": {
+            "asset_id": 1002,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:05:00",
+            "latitude": 51.5012,
+            "location": "Warehouse A",
+            "longitude": -0.1212,
+            "quantity": null,
+            "serial_number": null,
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:05:46.158278"
+    },
+    {
+        "asset_id": 1003,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1003 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided fully consistent data. Each system reported the asset as being at Site Beta with identical coordinates, status (\"out_of_service\"), and last seen timestamp of \"2026-08-12 10:10:00\". Since there were no discrepancies between the sources, no conflicts required resolution, and the merged record accurately reflects the unanimous data. All fields in the authoritative record are directly supported by the source systems, resulting in a clean, confident acceptance of the asset's current state.",
+        "authoritative_record": {
+            "asset_id": 1003,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:10:00",
+            "latitude": 51.5023,
+            "location": "Site Beta",
+            "longitude": -0.1223,
+            "quantity": null,
+            "serial_number": null,
+            "status": "out_of_service"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:05:51.030243"
+    },
+    {
+        "asset_id": 1004,
+        "decision": "accept",
+        "reasoning": "The decision to accept the record for Asset ID 1004 was made because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided identical and fully consistent data regarding the asset\u2019s location, status, coordinates, and timestamp. Since there were no discrepancies between the systems, no conflicts required resolution, and the authoritative record was confidently established using the shared values. All available fields were reconciled successfully, leaving nothing unresolved.",
+        "authoritative_record": {
+            "asset_id": 1004,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:15:00",
+            "latitude": 51.5034,
+            "location": "Depot C",
+            "longitude": -0.1234,
+            "quantity": null,
+            "serial_number": null,
+            "status": "in_transit"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:05:54.115634"
+    },
+    {
+        "asset_id": 1005,
+        "decision": "accept",
+        "reasoning": "Asset ID 1005 was assigned a decision of \"accept\" because all three source systems\u2014location tracker, maintenance system, and inventory system\u2014provided identical data for location, coordinates, status, and last seen timestamp. With complete agreement across all sources, no conflicts were detected, and the authoritative record was confidently established using the consistent values. All key attributes are fully reconciled, resulting in a clean, unified record with no unresolved discrepancies.",
+        "authoritative_record": {
+            "asset_id": 1005,
+            "asset_name": null,
+            "asset_type": null,
+            "availability": null,
+            "condition": null,
+            "last_seen": "2026-08-12 10:20:00",
+            "latitude": 51.5045,
+            "location": "Site Gamma",
+            "longitude": -0.1245,
+            "quantity": null,
+            "serial_number": null,
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:05:57.437598"
+    },
+    {
+        "asset_id": 1001,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1001 was made because all source systems\u2014the location tracker, maintenance system, and inventory system\u2014provided consistent and non-conflicting information. The location tracker confirmed the asset\u2019s presence at Site Alpha with recent telemetry, the maintenance system reported it as operational with good condition, and the inventory system listed it as available with matching details for name, type, and serial number. Since all fields aligned across systems without discrepancies, no conflicts were identified, and the merged record was accepted as complete and trustworthy.",
+        "authoritative_record": {
+            "asset_id": 1001,
+            "asset_name": "Generator G1",
+            "asset_type": "Generator",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:00:00",
+            "latitude": 51.5001,
+            "location": "Site Alpha",
+            "longitude": -0.1201,
+            "quantity": 1,
+            "serial_number": "GEN-001",
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:18:11.567219"
+    },
+    {
+        "asset_id": 1002,
+        "decision": "merge",
+        "reasoning": "The decision to merge the data for asset ID 1002, Forklift F2, was made to create a unified record combining the most up-to-date and contextually relevant information from the location tracker, maintenance system, and inventory system. A conflict was identified in the \"status\" field: the location tracker reported the forklift as \"operational,\" while the maintenance system marked it as \"under_repair.\" The maintenance system was prioritized as the authoritative source for status due to its role in tracking repair and service history, so the resolved status is \"under_repair.\" All other fields\u2014such as location, condition, and availability\u2014were consistently reported or non-conflicting across systems and were merged without issue. The final record reflects the forklift as being in Warehouse A, currently under repair, but still listed as available in inventory, with no unresolved conflicts.",
+        "authoritative_record": {
+            "asset_id": 1002,
+            "asset_name": "Forklift F2",
+            "asset_type": "Forklift",
+            "availability": "available",
+            "condition": "fair",
+            "last_seen": "2026-08-12 10:05:00",
+            "latitude": 51.5012,
+            "location": "Warehouse A",
+            "longitude": -0.1212,
+            "quantity": 1,
+            "serial_number": "FL-002",
+            "status": "under_repair"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "operational",
+                    "maintenance_source": "under_repair"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "under_repair"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:18:21.453040"
+    },
+    {
+        "asset_id": 1003,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1003, \"Pump P3,\" was made because all source systems\u2014the location tracker, maintenance system, and inventory system\u2014are in full agreement on the core attributes of the asset, with no conflicts detected. The location tracker confirms the pump is at Site Beta and was last seen on 2026-08-12 at 10:10:00, while the maintenance system reports its status as out of service with poor condition, and the inventory system aligns on the status by marking it as held_for_inspection with a quantity of 2. All updates are consistent and temporally coherent, with the most recent update coming from the inventory system. As a result, a complete and unified record was successfully formed without unresolved discrepancies.",
+        "authoritative_record": {
+            "asset_id": 1003,
+            "asset_name": "Pump P3",
+            "asset_type": "Pump",
+            "availability": "held_for_inspection",
+            "condition": "poor",
+            "last_seen": "2026-08-12 10:10:00",
+            "latitude": 51.5023,
+            "location": "Site Beta",
+            "longitude": -0.1223,
+            "quantity": 2,
+            "serial_number": "PMP-003",
+            "status": "out_of_service"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:18:27.767669"
+    },
+    {
+        "asset_id": 1004,
+        "decision": "merge",
+        "reasoning": "The decision to merge was made for asset ID 1004, \"Truck T4\", because all source systems provided complementary information that could be combined into a unified record. The location tracker reported the truck as \"in_transit\" with a recent GPS position at Depot C, while the maintenance system listed its status as \"operational\" and confirmed good condition. The inventory system confirmed availability and matching asset details. The conflict in the \"status\" field was resolved by prioritizing the maintenance system's \"operational\" status over the location tracker's \"in_transit\", as operational status is considered more authoritative for overall asset health. All other fields were consistent or non-overlapping, resulting in a complete, reconciled record.",
+        "authoritative_record": {
+            "asset_id": 1004,
+            "asset_name": "Truck T4",
+            "asset_type": "Truck",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:15:00",
+            "latitude": 51.5034,
+            "location": "Depot C",
+            "longitude": -0.1234,
+            "quantity": 1,
+            "serial_number": "TRK-004",
+            "status": "operational"
+        },
+        "conflicts": [
+            {
+                "field": "status",
+                "values": {
+                    "location_source": "in_transit",
+                    "maintenance_source": "operational"
+                },
+                "authoritative_source": "maintenance_source",
+                "resolution": "operational"
+            }
+        ],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:18:32.984626"
+    },
+    {
+        "asset_id": 1005,
+        "decision": "accept",
+        "reasoning": "The decision to accept the authoritative record for Asset ID 1005 was made because all source systems\u2014location tracker, maintenance system, and inventory system\u2014are in full agreement on all attributes, with no conflicts detected. The location tracker confirms the asset is at Site Gamma with recent presence, the maintenance system reports it as operational with good condition, and the inventory system lists it as available with matching name, type, and serial number. Since all systems align and the data is consistent and up to date, the merged record was accepted without any unresolved issues.",
+        "authoritative_record": {
+            "asset_id": 1005,
+            "asset_name": "Generator G5",
+            "asset_type": "Generator",
+            "availability": "available",
+            "condition": "good",
+            "last_seen": "2026-08-12 10:20:00",
+            "latitude": 51.5045,
+            "location": "Site Gamma",
+            "longitude": -0.1245,
+            "quantity": 1,
+            "serial_number": "GEN-005",
+            "status": "operational"
+        },
+        "conflicts": [],
+        "model_status": "ok",
+        "logged_at": "2026-08-15T21:18:36.517587"
+    }
+]
